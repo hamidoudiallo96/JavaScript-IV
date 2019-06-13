@@ -14,14 +14,14 @@ Prototype Refactor
 //   * dimensions (These represent the character's size in the video game)
 //   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 //  
-    class GameObject{
-        constructor(obj){
-            this.createdAt = obj.createdAt;
+    class GameObject{ // parent object
+        constructor(obj){ 
+            this.createdAt = obj.createdAt; // parent class properties
             this.name = obj.name;
             this.dimensions = obj.dimensions;
        }  
        
-       destroy () {
+       destroy () { //method to execute
         return `${this.name} was removed from the game`;
         }
     }   
@@ -35,15 +35,15 @@ Prototype Refactor
   * should inherit destroy() from GameObject's prototype
 */
 
-    class CharacterStats extends GameObject{
-        constructor(obj) {
-            super(obj)
+    class CharacterStats extends GameObject{ //subclass, inherits parent class
+        constructor(obj) { 
+            super(obj); // inherits parent class properties
             this.healthPoints = obj.healthPoints ;
         
         
         }
 
-        takeDamage () {
+        takeDamage () { // class method
             return `${this.name} took damage`
         };
     }
@@ -60,17 +60,17 @@ Prototype Refactor
   * should inherit destroy() from GameObject through CharacterStats
   * should inherit takeDamage() from CharacterStats
 */
-    class Humanoid extends CharacterStats{
+    class Humanoid extends CharacterStats{ //subclass, inherits parent class and previous sublcass
         constructor(obj) {
-            super(obj);
+            super(obj); // inherits parent class and previous sublcass properties
             this.team = obj.team;
             this.weapons = obj.weapons;
             this.language = obj.language;
 
         }
 
-        greet () {
-            return `${this.name} offers a greeting in ${this.language}`
+        greet () { //class method
+            return `${this.name} offers a greeting in ${this.language}`;
         }
 
     }
